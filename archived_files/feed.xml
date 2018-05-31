@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss 
+    version="2.0" 
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:ev="http://purl.org/rss/1.0/modules/event/">
+    >
+
+<channel>
+    <title>LADesign.Community</title>
+    <description>A list of LA's design events</description>
+    <link>http://www.ladesign.community</link>
+    <language>en-us</language>
+    <atom:link href="http://ladesign.community/feed.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+        <title>SoCal UX Camp</title>
+        <description>SoCal UX Camp</description>
+
+        <host>Content Strategy Southern California</host>
+        <location>BLANKSPACES</location>
+        <address>5405 Wilshire Boulevard, Los Angeles, CA</address>
+
+        <link>https://www.eventbrite.com/e/socal-ux-camp-2016-registration-26016860129</link>
+        <guid>https://www.eventbrite.com/e/socal-ux-camp-2016-registration-26016860129</guid>
+        <pubDate>Sat, 06 Aug 2016 08:00:00 PST</pubDate>
+        <content:encoded><![CDATA[<li id="event-on-20160806" class="event future" data-date="20160806"><div class="when"><div class="day">Saturday</div> <div class="date">08/06</div><div class="time">8am</div></div><h1><a target="blank" href="https://www.eventbrite.com/e/socal-ux-camp-2016-registration-26016860129?utm_source=GeremyMumenthaler">SoCal UX Camp</a> <span class="price"></span></h1><h2>SoCal UX Camp</h2><h3><div>Cal State Fullerton Irvine Campus </div><a target="blank" href="http://maps.google.com/?q=3 Banting Irvine, CA 92618">3 Banting Irvine, CA 92618</a></h3></li>]]></content:encoded>
+    </item>
+
+</channel>
+
+</rss>

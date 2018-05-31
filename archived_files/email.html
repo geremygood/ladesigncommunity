@@ -1,0 +1,152 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html,
+        body{
+            color: white;
+            font-family: "Helvetica", Ariel, sans-serif;
+            font-size: 18px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            background: #333;
+            background-color: #3498db;
+            border: none;
+        }
+        table{
+            padding: 0;
+            margin: 0;
+            border: none;
+            border-spacing: 0px;
+        }
+        tr,th{border: none;}
+        *{
+            box-sizing: border-box;
+        }
+        a:visited{color: auto;}
+        a{
+            color: white;
+            text-decoration: none;
+            border-bottom: solid 6px rgba(0,0,0,0.15);
+            transition: border-color 0.3s ease;
+        }
+        #container{
+            width: 100%;
+        }
+
+    .event:nth-of-type(odd){background-color: #2980b9;}
+    .event.today{opacity: 1;background: #2ecc71;}
+    .event.today:nth-of-type(odd){background-color: #27ae60;}
+
+    .event.tomorrow{opacity: 1;background: #e67e22;}
+    .event.tomorrow:nth-of-type(odd){background-color: #d35400;}
+    .event h3{
+        font-weight: 100;
+        line-height: 1.5em;
+        font-size: 12px;
+    }
+    .event .when{
+        line-height: 1.25em;
+    }
+    .price{
+        font-size: 24px;
+        font-weight: 100;
+    }
+    .event h3 a{
+        opacity: 0.75;
+        padding-top: 6px;
+        display: inline-block;
+    }
+    .event h3 div{
+        font-size: 18px;
+    }
+    .day{display: inline-block;}
+    .date{font-size: 14px; font-weight: 100; display: inline-block; opacity: 0.75;}
+    .time{font-size: 14px; font-weight: 100;opacity: 0.75;}
+    small{
+        display: block;
+        font-size: 18px;
+        padding-top: 12px;
+        font-weight: 100;
+        line-height: 24px;
+    }
+    .why{
+        width:100%;
+        text-align: left;
+        padding: 50px 0;
+        text-align: left;
+        text-decoration: none;
+        font-weight: bold;
+        display: block;
+        color: #ffffff;
+        background: #1f1f1f;
+        background-color: #1f1f1f;
+        font-size: 32px;
+    }
+
+
+    @media only screen and (max-width: 480px) {
+        table{
+            width: 100%;
+        }
+        h1{
+            font-size: 36px;
+            line-height: 36px;
+        }
+         .event,
+         .sponsor,
+         .why,
+         .explaination>div{
+            padding: 24px;
+         }
+    }
+    </style>
+</head>
+
+<body>
+
+<table id="container" cellpadding="50">
+    <th class="why" style="background-color: #1f1f1f; padding: 50px;">
+        <div class="when" style="background: #1f1f1f;">
+            <div mc:edit="week-number" style="font-size:18px; background: #1f1f1f;">Week 20/52</div>
+            <div mc:edit="week-dates" class="date" style="background: #1f1f1f;">May 14 2015 – May 24 2015</div>
+        </div>
+        <h1>LA Design. <br/><span style="color: #3498db;">Community</span></h1>
+         <smalL>Curated by <a target="_blank" href="http://twitter.com/geremygood">Geremy Mumenthaler</a></small>
+
+        <a href="http://www.ladesign.community">Learn more about it</a>
+    </th>
+    <tr class="event" mc:repeatable>
+        <td>
+            <div class="when">
+                <div class="day" mc:edit="day">Sunday</div>
+                <div class="date"  mc:edit="date">05/15/15</div>
+                <div class="time" mc:edit="time">7:00</div>
+            </div>
+            <h1 style="font-size: 48px; margin-bottom: 0; line-height: 1.21em;">
+                <a target="blank"  mc:edit="title" href="">Some Type of Event</a>
+                <span class="price"  mc:edit="price" >$10</span>
+            </h1>
+            <h2 mc:edit="host" style="margin: 0; font-weight: 100; line-height: 1.5em; opacity: 0.75;">Host of the Event</h2>
+            <h3>
+                <div mc:edit="location">Name of Location</div>
+                <a  mc:edit="address" target="blank" href="http://maps.google.com/?q='+ data.events[i].address +'">location address</a>
+            </h3>
+        </td>
+    </tr>
+
+    <tr mc:edit="footer" id="footer" style="background-color: #1f1f1f;" >
+        <td>
+            <h1 font-size: 24px; line-height: 24px;>*|LIST:DESCRIPTION|*</h1>
+            <div><a href="*|UNSUB|*">Unsubscribe</a> *|EMAIL|* from the weekly list.</div>
+            <br/>
+            <div class="location">*|HTML:LIST_ADDRESS_HTML|*</div>
+            <br/>
+            *|REWARDS|*
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

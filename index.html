@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="author" content="Geremy Good - Geremy Mumenthaler">
+    <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="apple-touch-startup-image" href="ladesigncommunity.png" />
+    <link rel="apple-touch-icon" href="ladesigncommunity.png" />
+
+
+    <link rel="stylesheet" href="community.css">
+</head>
+
+<body id="events">
+
+    <div class="header " onClick="$('.header').addClass('expand');">
+        <div>
+            <!-- <a href="#" onClick="$('.header').removeClass('expand');" class="hidden">Close this up</a> -->
+            <!-- <a class="sponsor" href="mailto:me@geremygood.com">Become a sponsor</a> -->
+            <!--<a class="sponsor" target="_blank" href="http://carbonfive.com?utm_source=LAdesign.community" title="Sponsor Link">-->
+                <!-- <img src="sponsors/C5_final_logo_horiz.svg" /> -->
+                <!-- <div>– November sponsor – </div> -->
+            <!--</a>-->
+
+            <h1>LA Design.<span class="blue">Community</span> 
+                <!-- <a class="info-button" href="#info"><img src="info.svg" width="12"></a>  -->
+            </h1>
+
+            <p class="tagline" style="color: #bababa; pading-top: 10px;">A simple list of where to find the LA&nbsp;design&nbsp;community <smalL class="hidden">Curated by <a target="_blank" href="http://twitter.com/geremygood">Geremy Mumenthaler</a></small>
+            </p>
+
+
+            <div class="email-signup future event hidden"  >
+               
+            <!--End mc_embed_signup-->
+
+        </div>
+
+            <!-- <a href="#about" onClick="$('html, body').animate({scrollTop: $('#about').offset().top}, 2000);">Learn more about it</a> -->
+
+        </div>
+    </div>
+
+
+    <nav id="navigation">
+        <a class="the-future current" href="#">the future</a>
+        <a class="the-past" href="#">the past</a>
+    </nav>
+
+    <ul id="event-list" class="event-list">
+        <style>
+        #loading{
+            font-size: 48px;
+            text-align: center;
+        }
+        #loading:before {
+            content: attr(data-text);
+            position: absolute;
+            overflow: hidden;
+            max-width: 8em;
+            white-space: nowrap;
+            color: #fff;
+            animation: loading 8s linear;
+        }
+        @keyframes loading {
+            0% {
+                max-width: 0;
+            }
+        }
+        </style>
+        <h1 id="loading" data-text="Finding Events">Finding Events</h1>
+<!--         <li class="sponsor">
+            <h1>August's list of events is brought to you by</h1>
+            <a target="_blank" href="http://carbonfive.com?utm_source=LAdesign.community" title="Sponsor Link"><img src="sponsors/carbonfive.svg" width="60%"/></a>
+        </li> -->
+
+    </ul>
+
+
+</body>
+
+    <script type="text/javascript" src='/scripts/jquery-1.5.min.js'></script>
+    <script type="text/javascript" src='/scripts/list.min.js'></script>
+    <script type="text/javascript" src='/scripts/date.js'></script>
+    <script>
+        var future = true;
+
+        // Adds leading zero
+        function pad(n) {return (n<10 ? '0'+n : n);}
+
+        // Add query string
+        function addParameterToURL(url, param){
+            _url = url;
+            _url += (_url.split('?')[1] ? '&':'?') + param;
+            return _url;
+        }
+
+        // Figures out day of week
+        function showDayOfWeek(date){
+            var d = new Date(date);
+            var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            return weekday[d.getDay()];
+        }
+        
+        function getToday(){
+            var today = new Date();
+            console.log(today.toISOString())
+            return today.toISOString();
+        }
+
+        function getOneYearFromToday(){
+            var nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+            console.log(nextYear.toISOString())
+            return nextYear.toISOString();
+        }
+
+        function getOneYearBeforeToday(){
+            var nextYear = new Date(new Date().setFullYear(new Date().getFullYear() - 1))
+            console.log(nextYear.toISOString())
+            return nextYear.toISOString();
+        }
+
+        function dateFormat(date) {
+            var tempDate = date.replace('+00:00','-08:00')
+            var jsDate = new Date(tempDate)
+            var pstDate = new Date( jsDate )
+            theyear = jsDate.getFullYear()
+            themonth = jsDate.getMonth()+1
+            theday = jsDate.getDate()
+            return pad(themonth) +'/'+ pad(theday) +'/'+ theyear
+        }
+
+        //sortEvents = function(){
+        //    console.log('sort');
+        //    var date = new Date()
+        //    var tdate = new Date.today().add(1).days()
+        //    today = dateFormat(date)
+        //    tomorrow = dateFormat(tdate)
+
+
+        //    $('.event').each(function(){
+        //        $this = $(this)
+        //        date = $this.data('date');
+        //        delta = date-today
+
+        //        if( delta <  0 ){
+        //            $this.addClass('past')
+        //            daystring = $this.find('.day').text()
+        //            $this.find('.day').text(daystring + " ( in the past )")
+        //        }else if( date == today ){
+        //            $this.addClass('today')
+        //            $this.find('.day').text('Today')
+        //        }else if( date == tomorrow ){
+        //            $this.addClass('tomorrow')
+        //            $this.find('.day').text('Tomorrow')
+        //        }else if( delta > 0 ){
+        //            $this.addClass('future')
+        //        }
+        //    });
+
+        //    function sortUnorderedList() {
+
+        //        ul = $('#event-list');
+
+        //        lis = $('.past');
+        //        lis.remove()
+
+        //        array = lis.toArray()
+        //        array = array.reverse();
+
+        //        var arrayLength = array.length;
+        //        for (var i = 0; i < arrayLength; i++) {
+        //            ul.append(array[i]);
+        //        }
+        //    }
+
+
+        $('nav a').click(function(e){
+            e.preventDefault()
+            $('nav a').toggleClass('current');
+            $('.event-list').toggleClass('show-past');
+
+            if (e.target.className.indexOf('the-past') !== -1){
+                return renderEvents(future=false)
+            }else{
+                return renderEvents(future=true)
+            }
+        });
+
+        function renderEvents(future){
+            apiUrl = 'https://sheetlabs.com/LADC/ladesigncommunity'
+            apiUrl += '?status=approved';
+            if ( future ){
+                apiUrl += '&date='+getToday()+'..'+getOneYearFromToday();
+                dateState = 'future'
+            }else{
+                apiUrl += '&date='+getOneYearBeforeToday()+'..'+getToday();
+                dateState = 'past'
+            }
+            
+            $.getJSON(apiUrl, function(data) {
+                var output = '',
+                    emailBlock = "<li id='mc_embed_signup'> \
+                        <form action='//blue.us11.list-manage.com/subscribe/post?u=1efac48c3737fc3ba4ced65b4&amp;id=46e8824a90' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank' novalidate> \
+                            <h2>Events of the week in your inbox</h2> \
+                            <div id='mc_embed_signup_scroll'> \
+                            <input placeholder='Enter your email' type='email' value='' name='EMAIL' class='required email' id='mce-EMAIL'> \
+                            <input type='submit' value='Send me the weekly email' name='subscribe' id='mc-embedded-subscribe' class='button' > \
+                            <div id='mce-responses' class='clear'> \
+                                <div class='response' id='mce-error-response' style='display:none'></div> \
+                                <div class='response' id='mce-success-response' style='display:none'></div> \
+                            </div> \
+                            <div style='position: absolute; left: -5000px;'><input type='text' name='b_1efac48c3737fc3ba4ced65b4_46e8824a90' tabindex='-1' value=''></div> \
+                            </div> \
+                        </form> \
+                    </li>";
+                    sponsor = "<li class='become-sponsor'> \
+                        <h2>Support the design community</h2> \
+                        <p>And put your message right here.</p> \
+                        <br/> \
+                        <a class='button' href='mailto:me@geremygood.com'>Become a sponsor</a></li>";
+                
+                for (var i in data) {
+
+                    if( i == 3 ){
+                        output+=emailBlock;
+                    }
+                    if( i == 6 ){
+                        output+=sponsor;
+                    }
+
+                    eventClasses = ['event', dateState]
+                    output+='<li id="event-on-' + data[i].timestamp + '" class="'+eventClasses.join(' ')+'" data-date="'+ data[i].date +'">';
+                    output+='<div class="when">';
+                    output+='<div class="day">'+ showDayOfWeek( data[i].date ) +'</div> ';
+                    output+='<div class="date">'+ dateFormat(data[i].date) +'</div>';
+                    output+='<div class="time">' + data[i].starttime + '—' + data[i].endtime + '</div>';
+                    output+='</div>';
+                    output+='<h1><a target="blank" href="'+ addParameterToURL( data[i].url , 'utm_source=ladesign.community') +'">'+ data[i].title +'</a> <span class="price">'+ data[i].cost +'</span></h1>';
+                    output+='<h2>'+ data[i].host +'</h2>';
+                    output+='<h3>';
+                    output+='<div>'+ data[i].locationname +'</div>';
+                    output+='<a target="blank" href="http://maps.google.com/?q='+ data[i].locationaddress +'">'+ data[i].locationaddress +'</a>';
+                    output+='</h3>';
+                    output+='</li>';
+                }
+                
+                $("#event-list").html(output);
+                //sortEvents();
+            });            
+        }
+        
+        renderEvents(future=true)
+
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-28939505-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+</html>
